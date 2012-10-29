@@ -1,0 +1,8 @@
+<div class="tab-pane" id="tab2">
+  <% @sub_moods.each do |sub_mood| %>
+    <%= link_to image_tag(sub_mood.sub_mood_picture, title: sub_mood.name)  %>
+  <% end %>
+</div>
+
+
+
