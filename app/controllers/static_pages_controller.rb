@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  
   def about
   end
 
@@ -22,4 +23,5 @@ class StaticPagesController < ApplicationController
 
   def help
   end
+ 
 end

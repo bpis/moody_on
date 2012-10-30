@@ -1,5 +1,5 @@
 MoodyOn::Application.routes.draw do
-  
+
   match '/about', :to => "static_pages#about"
   match '/blog', :to => "static_pages#blog"
   match '/developers', :to => "static_pages#developers"
@@ -9,6 +9,11 @@ MoodyOn::Application.routes.draw do
   match '/contact', :to => "static_pages#contact"
   match '/help', :to => "static_pages#help"
   
+ 
+  match "profile" => "users#profile"
+  match "new_profile" => "users#new_profile"
+  
+  match '/settings/:id', :to => "users#settings"
   authenticated :user do
     resources :events
     resources :reasons

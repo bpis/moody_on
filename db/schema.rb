@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027143807) do
+ActiveRecord::Schema.define(:version => 20121030105303) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,28 @@ ActiveRecord::Schema.define(:version => 20121027143807) do
     t.string   "mood_picture"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "gender"
+    t.date     "date_of_birth"
+    t.string   "marital_status"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "pincode"
+    t.integer  "mobile_no",       :limit => 8
+    t.string   "org_name"
+    t.string   "designation"
+    t.string   "profession"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "profile_picture", :limit => 45
   end
 
   create_table "reasons", :force => true do |t|

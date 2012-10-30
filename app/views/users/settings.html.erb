@@ -1,0 +1,65 @@
+<h2> Settings </h2>
+
+<h3> Your Profile </h3>
+<div class="tabbable tabs-right">
+  <ul class="nav nav-tabs">
+   <li class="active"><a href="#tab1" data-toggle="tab">Your Profile</a></li>
+    <li><a href="#tab2" data-toggle="tab">Sharing With Other Networks</a></li>
+    <li><a href="#tab2" data-toggle="tab">Privacy Settings</a></li>
+    <li><a href="#tab2" data-toggle="tab">Notifications</a></li>
+    <li><a href="#tab2" data-toggle="tab">Connected Apps</a></li>
+    <li><a href="#tab2" data-toggle="tab">Local Updates</a></li>
+  </ul>
+  <div class="tab-content">
+  <div class="tab-pane active" id="tab1">
+  		
+	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+	  <%= f.error_notification %>
+	  <%= f.label :picture, "Profile Picture" %>
+	  <%= image_tag('/images/default_profile_image.png', :alt => "Profile Picture", :width => 110, :height => 110) %>
+	  <br />
+	  <%= file_field_tag :picture %>
+	  <br />
+	  <%= f.label :name , "Name" %>
+	  <%= f.text_field :name, :placeholder => "First Name" %>
+	  <%= f.text_field :name, :placeholder => "Last Name" %>
+	  
+	  <!-- <%= f.input :name, :autofocus => true %> -->
+	  
+	  <%= label_tag :phone , "Phone Number" %>
+	  <%= text_field_tag :phone %>
+	  
+	  <%= f.input :email, :required => true %>
+	  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+	  <%= f.input :password_confirmation, :required => false %>
+	  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+	  
+	  <%= label_tag :bio %>
+	  <%= text_area_tag :bio %>
+	  <br />
+	  <%= label_tag :location %>
+	  <%= text_field_tag :location %>
+	  <br />
+	  <%= link_to "Change Password", "#" %>
+	  <br />
+	  <br />
+	  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+	<% end %>
+	<h3>Cancel my account</h3>
+	<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+	<%= link_to "Back", :back %>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="tab-pane" id="tab2">
+      <p>Howdy, I'm in Section 2.</p>
+    </div>
+  </div>
+</div>

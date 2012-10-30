@@ -12,7 +12,7 @@
        <ul class="dropdown-menu">
           <li><%= link_to "Your Profile", current_user %></li>
           <li><%= link_to "Add Friends", "#"%></li>
-          <li><%= link_to "Settings", "#"%>
+          <li><%= link_to "Settings", '/settings/:id'%>
           <li> <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> </li>
           <li> <%= link_to 'Edit account', edit_user_registration_path %> </li>
      
