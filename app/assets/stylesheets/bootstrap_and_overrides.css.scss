@@ -33,5 +33,11 @@ textarea {
   margin-bottom: 5px;
 }
 
+select {
+  height: 30px;
+  width: 110px;
+}
 
-
+ul.cssMenu li:hover > ul{
+  display:block;
+}

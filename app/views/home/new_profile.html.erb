@@ -1,5 +1,5 @@
 <% if current_user.present? %>
-<%= form_for :profile, :url => {:action => "profile", :controller => "users"}, :html => {:multipart => true} do |f| %>
+<%= form_for :profile, :url => {:action => "profile", :controller => "home"}, :html => {:multipart => true} do |f| %>
 
 	<!-- <%= label_tag :name %> -->
 	<%= f.text_field :fname, :placeholder => "First Name" %>
@@ -10,7 +10,9 @@
 	</div><br />
 	<%= f.radio_button :gender, 'Male', :checked => true %> Male
 	<%= f.radio_button :gender, 'Female' %> Female<br /><br />
-	<%= f.date_select :date_of_birth %><br /><br />
+	<div class="date">
+	<%= f.date_select :date_of_birth, :start_year => 1950, :end_year => 2012 %><br /><br />
+	</div>
 	<%= f.radio_button :marital_status, 'Married', :checked => true %> Married
 	<%= f.radio_button :marital_status, 'Unmarried' %> Unmarried<br /><br />
 	<%= f.text_field :city, :placeholder => "City" %><br />

@@ -10,8 +10,8 @@ MoodyOn::Application.routes.draw do
   match '/help', :to => "static_pages#help"
   
  
-  match "profile" => "users#profile"
-  match "new_profile" => "users#new_profile"
+  match "profile" => "home#profile"
+  match "new_profile" => "home#new_profile"
   
   match '/settings/:id', :to => "users#settings"
   authenticated :user do
