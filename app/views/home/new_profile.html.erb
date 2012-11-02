@@ -1,30 +1,40 @@
 <% if current_user.present? %>
-<%= form_for :profile, :url => {:action => "profile", :controller => "home"}, :html => {:multipart => true} do |f| %>
-
-	<!-- <%= label_tag :name %> -->
-	<%= f.text_field :fname, :placeholder => "First Name" %>
-	<%= f.text_field :lname, :placeholder => "Last Name" %><br />
-	<div class="textarea">
-	<%= f.text_area :address_line_1, :placeholder => "Temporary Address" %><br />
-	<%= f.text_area :address_line_2, :placeholder => "permanent Address" %><br />
-	</div><br />
-	<%= f.radio_button :gender, 'Male', :checked => true %> Male
-	<%= f.radio_button :gender, 'Female' %> Female<br /><br />
-	<div class="date">
-	<%= f.date_select :date_of_birth, :start_year => 1950, :end_year => 2012 %><br /><br />
+	<div class="tabbable tabs-right">
+		<%= render :partial => "home/show_profile_menu" %>
+		<div class="tab-content">
+	  		<div class="tab-pane active" id="tab1">
+	  			<% if @profile.present?%>
+	  				<h6> Your Profile </h6>
+					<%= form_for @profile, :url => {:action => "profile", :controller => "home"}, :html => {:multipart => true} do |f| %>
+						<%= render :partial => "home/profile_form", :locals => {:f => f} %><br />
+						<%= f.submit "Save Profile" %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<h6> Change Password </h6>
+      		<%= render :partial => "home/change_password_form" %>
+    	</div>
+    	<div class="tab-pane" id="tab3">
+      		<h6> Sharing With Other Networks </h6>
+    	</div>
+    	<div class="tab-pane" id="tab4">
+    		<h6> Privacy Settings </h6>
+      		<h3>Cancel my account</h3>
+				<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+			<%= link_to "Back", :back %>
+    	</div>
+    	<div class="tab-pane" id="tab5">
+      		<h6> Notifications </h6>
+    	</div>
+    	<div class="tab-pane" id="tab6">
+      		<h6> Connected Apps </h6>
+    	</div>
+    	<div class="tab-pane" id="tab7">
+      		<h6> Local Updates </h6>
+    	</div>
 	</div>
-	<%= f.radio_button :marital_status, 'Married', :checked => true %> Married
-	<%= f.radio_button :marital_status, 'Unmarried' %> Unmarried<br /><br />
-	<%= f.text_field :city, :placeholder => "City" %><br />
-	<%= f.text_field :state, :placeholder => "State" %><br />
-	<%= f.text_field :country, :placeholder => "Country" %><br />
-	<%= f.text_field :pincode, :placeholder => "Pincode" %><br />
-	<%= f.text_field :mobile_no, :placeholder => "Phone Number" %><br />
-	<%= f.text_field :org_name, :placeholder => "Organisation" %><br />
-	<%= f.text_field :designation, :placeholder => "Designation" %><br />
-	<%= f.text_field :profession, :placeholder => "Profession" %><br />
-	<%= f.file_field :profile_picture %><br />
-	<%= f.submit "Save Profile" %>
-	
 <% end %>
-<% end %>
+
+

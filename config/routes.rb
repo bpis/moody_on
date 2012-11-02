@@ -13,7 +13,7 @@ MoodyOn::Application.routes.draw do
   match "profile" => "home#profile"
   match "new_profile" => "home#new_profile"
   
-  match '/settings/:id', :to => "users#settings"
+  
   authenticated :user do
     resources :events
     resources :reasons

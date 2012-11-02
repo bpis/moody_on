@@ -29,11 +29,6 @@ class UsersController < ApplicationController
     else
       redirect_to users_path, :notice => "Can't delete yourself."
     end
-  end
-  
-  def settings
-    @user = current_user
-  end
-  
+  end  
      
 end

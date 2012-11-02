@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moodyon.com</title>
+    <meta name="description" content="moodyon.com">
+    <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/bootstrap_and_overrides.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/events.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/home.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/moods.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/reasons.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/scaffolds.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/static_pages.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/sub_moods.css?body=1" media="all" rel="stylesheet" type="text/css" />
+    <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-transition.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-affix.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-alert.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-button.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-carousel.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-collapse.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-dropdown.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-modal.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-scrollspy.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-tab.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-tooltip.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-popover.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap-typeahead.js?body=1" type="text/javascript"></script>
+<script src="/assets/bootstrap.js?body=1" type="text/javascript"></script>
+<script src="/assets/events.js?body=1" type="text/javascript"></script>
+<script src="/assets/home.js?body=1" type="text/javascript"></script>
+<script src="/assets/moods.js?body=1" type="text/javascript"></script>
+<script src="/assets/reasons.js?body=1" type="text/javascript"></script>
+<script src="/assets/static_pages.js?body=1" type="text/javascript"></script>
+<script src="/assets/sub_moods.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="lbD9cPZzU4klqPqgYeqfcoEvP1ySrKwVrAxRJ1koJL8=" name="csrf-token" />
+    
+  </head>
+  <body class="home new_profile">
+    <header class="navbar navbar-fixed-top">
+      <nav class="navbar-inner">
+        <div class="container">
+          <a href="/" class="brand">moodyon.com</a>
+<ul class="cssMenu"> 
+	<ul class="nav" style="float:right;">
+   			<li><a href="/">Home</a></li>
+    		<li></li>
+    	    <li id="fat-menu" class="dropdown">
+       			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          			User 15 <b class="caret"></b>
+       			</a>
+       			<ul class="dropdown-menu">
+          			<li><a href="/users/13">Your Profile</a></li>
+          			<li><a href="#">Add Friends</a></li>
+          			<li><a href="/new_profile">Settings</a>
+          			<li><a href="/users/sign_out" data-method="delete" rel="nofollow">Logout</a> </li>
+          			<li><a href="/users/edit">Edit account</a> </li>
+          		</ul>
+          	</li>
+	</ul>
+</ul>
+
+        </div>
+      </nav>
+    </header>
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="span12">
+              
+              	<div class="tabbable tabs-right">
+		<h5> Settings </h5>
+<h6> Your Profile </h6>
+	<ul class="nav nav-tabs">
+   		<li class="active"><a href="#tab1" data-toggle="tab">Your Profile</a></li>
+   		<li><a href="#tab2" data-toggle="tab">Change Password</a></li>
+    	<li><a href="#tab3" data-toggle="tab">Sharing With Other Networks</a></li>
+    	<li><a href="#tab4" data-toggle="tab">Privacy Settings</a></li>
+    	<li><a href="#tab5" data-toggle="tab">Notifications</a></li>
+    	<li><a href="#tab6" data-toggle="tab">Connected Apps</a></li>
+    	<li><a href="#tab7" data-toggle="tab">Local Updates</a></li>
+  	</ul>
+
+
+		<div class="tab-content">
+	  		<div class="tab-pane active" id="tab1">
+					<form accept-charset="UTF-8" action="/profile" class="edit_profile" enctype="multipart/form-data" id="edit_profile_22" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="lbD9cPZzU4klqPqgYeqfcoEvP1ySrKwVrAxRJ1koJL8=" /></div>
+						<!-- <label for="name">Name</label> -->
+	<input id="profile_profile_picture" name="profile[profile_picture]" type="file" /><br /><br />
+	<input id="profile_fname" name="profile[fname]" placeholder="First Name" size="30" type="text" value="d" />
+	<input id="profile_lname" name="profile[lname]" placeholder="Last Name" size="30" type="text" value="d" /><br />
+	<div class="textarea">
+	<textarea cols="40" id="profile_address_line_1" name="profile[address_line_1]" placeholder="Temporary Address" rows="20">
+mhbf</textarea><br />
+	<textarea cols="40" id="profile_address_line_2" name="profile[address_line_2]" placeholder="permanent Address" rows="20">
+ksaahbf</textarea><br />
+	</div><br />
+	<label for="profile_gender">Gender</label>
+	<!-- <input checked="checked" id="profile_gender_male" name="profile[gender]" type="radio" value="Male" /> Male
+	<input id="profile_gender_female" name="profile[gender]" type="radio" value="Female" /> Female -->
+	<select id="profile_gender" name="profile[gender]"><option value="Male" selected="selected">Male</option>
+<option value="Female">Female</option></select><br /><br />
+	<div class="date">
+	<label for="profile_date_of_birth">Birthday</label>
+	<select id="profile_date_of_birth_1i" name="profile[date_of_birth(1i)]">
+<option value="1950">1950</option>
+<option value="1951">1951</option>
+<option value="1952">1952</option>
+<option value="1953">1953</option>
+<option value="1954">1954</option>
+<option value="1955">1955</option>
+<option value="1956">1956</option>
+<option value="1957">1957</option>
+<option value="1958">1958</option>
+<option value="1959">1959</option>
+<option value="1960">1960</option>
+<option value="1961">1961</option>
+<option value="1962">1962</option>
+<option value="1963">1963</option>
+<option value="1964">1964</option>
+<option value="1965">1965</option>
+<option value="1966">1966</option>
+<option value="1967">1967</option>
+<option value="1968">1968</option>
+<option value="1969">1969</option>
+<option value="1970">1970</option>
+<option value="1971">1971</option>
+<option value="1972">1972</option>
+<option value="1973">1973</option>
+<option value="1974">1974</option>
+<option value="1975">1975</option>
+<option value="1976">1976</option>
+<option value="1977">1977</option>
+<option value="1978">1978</option>
+<option value="1979">1979</option>
+<option value="1980">1980</option>
+<option value="1981">1981</option>
+<option value="1982">1982</option>
+<option value="1983">1983</option>
+<option value="1984">1984</option>
+<option value="1985">1985</option>
+<option value="1986">1986</option>
+<option value="1987">1987</option>
+<option value="1988">1988</option>
+<option value="1989">1989</option>
+<option value="1990">1990</option>
+<option value="1991">1991</option>
+<option value="1992">1992</option>
+<option value="1993">1993</option>
+<option value="1994">1994</option>
+<option value="1995">1995</option>
+<option value="1996">1996</option>
+<option value="1997">1997</option>
+<option value="1998">1998</option>
+<option value="1999">1999</option>
+<option value="2000">2000</option>
+<option value="2001">2001</option>
+<option value="2002">2002</option>
+<option value="2003">2003</option>
+<option value="2004">2004</option>
+<option value="2005">2005</option>
+<option value="2006">2006</option>
+<option value="2007">2007</option>
+<option value="2008">2008</option>
+<option value="2009">2009</option>
+<option value="2010">2010</option>
+<option value="2011">2011</option>
+<option selected="selected" value="2012">2012</option>
+</select>
+<select id="profile_date_of_birth_2i" name="profile[date_of_birth(2i)]">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option selected="selected" value="11">November</option>
+<option value="12">December</option>
+</select>
+<select id="profile_date_of_birth_3i" name="profile[date_of_birth(3i)]">
+<option value="1">1</option>
+<option selected="selected" value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<br /><br />
+	</div>
+	<div class="select_relationship">
+	<label for="profile_marital_status">Relationship Status</label>
+	<select id="profile_marital_status" name="profile[marital_status]"><option value="Single" selected="selected">Single</option>
+<option value="In a Relationship">In a Relationship</option>
+<option value="Engaged">Engaged</option>
+<option value="Married">Married</option>
+<option value="It&#x27;s Complicated">It&#x27;s Complicated</option>
+<option value="In an Open Relationship">In an Open Relationship</option>
+<option value="Widowed">Widowed</option>
+<option value="Seperated">Seperated</option>
+<option value="Dicorced">Dicorced</option></select><br /
+	</div>
+	<input id="profile_city" name="profile[city]" placeholder="City" size="30" type="text" value="Nagpur" /><br />
+	<input id="profile_state" name="profile[state]" placeholder="State" size="30" type="text" value="Maharashtra" /><br />
+	<input id="profile_country" name="profile[country]" placeholder="Country" size="30" type="text" value="India" /><br />
+	<input id="profile_pincode" name="profile[pincode]" placeholder="Pincode" size="30" type="text" value="441155" /><br />
+	<input id="profile_mobile_no" name="profile[mobile_no]" placeholder="Phone Number" size="30" type="text" value="8654953628" /><br />
+	<input id="profile_org_name" name="profile[org_name]" placeholder="Organisation" size="30" type="text" value="BPSI" /><br />
+	<input id="profile_designation" name="profile[designation]" placeholder="Designation" size="30" type="text" value="May Be" /><br />
+	<input id="profile_profession" name="profile[profession]" placeholder="Profession" size="30" type="text" value="Anything" /><br />
+	
+		
+<br />
+						<input name="commit" type="submit" value="Save Profile" />
+</form>			</div>
+			<div class="tab-pane" id="tab2">
+      			<p>Howdy, I'm in Section 2.</p>
+    		</div>
+		</div>
+	</div>
+
+
+
+            </div>
+          </div>
+          <footer class="navbar navbar-fixed-bottom">
+          	<nav class="navbar-inner">
+        		<div class="container">
+          			<a href="/about">About Us</a> | 
+          			<a href="/blog">Blog</a> | 
+          			<a href="/developers">Developers</a> | 
+          			<a href="/jobs">Jobs</a> | 
+          			<a href="/privacy">Privacy</a> | 
+          			<a href="/terms">Terms</a> | 
+          			<a href="/contact">Contact Us</a> | 
+          			<a href="/help">Help</a> | 
+                    <div id="copyright" style="float:right;">
+                    	moodyon.com &copy; 2012 [BluePlanet Infosolutions Pvt. Ltd.]
+                    </div>
+                 </div>
+             </nav>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </div> <!--! end of #main -->
+  </body>
+</html>

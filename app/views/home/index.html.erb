@@ -1,5 +1,4 @@
 
-
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">Moods</a></li>
@@ -35,10 +34,8 @@
   </div>
 </div>
 
-<% if !current_user.profile.present? %>
-	<%= link_to "View", "#" %>
-<% else %>
-	
+<% if check_profile(current_user) %>
+<% else %>	
 	<%= link_to "Click here to Complete Your Profile", new_profile_path %>
 <% end %>
 

@@ -17,33 +17,21 @@ class HomeController < ApplicationController
     end
   end
   
-  # def show_profile
-    # @user = current_user.profile if current_user.present?
-   # end
-   def new_profile
-    @profile = Profile.new  
-   end
-
-   def profile
-    @user = current_user
-    @profile = Profile.where(["user_id=?", current_user.id])
-    # debugger
-    if @profile.present?
-      if @user.profile.update_attributes(params[:profile])
-    
-      flash[:notice] = "Profile saved successfully."
-      #redirect_to "/show_profile/#{current_user.id}"
-      redirect_to "/"
-    else
-      flash[:error] = "Something went wrong."
-      redirect_to :back
-   end
-    end
-    #profile = Profile.new(params[:profile])
-    # @profile = current_user.build_profile(params[:profile])
-    #profile.user_id = current_user.id
-    
+  def new_profile
+    @profile = current_user.profile
   end
 
-  
+  def profile
+    @user = current_user
+    @profile = current_user.profile
+    if @profile.present?
+      if @user.profile.update_attributes(params[:profile])
+        flash[:notice] = "Profile saved successfully."
+        redirect_to "/"
+      else
+        flash[:error] = "Something went wrong."
+        redirect_to :back
+      end
+    end
+  end
 end
