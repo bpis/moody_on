@@ -11,6 +11,7 @@
        			<li><%= link_to "Your Profile", current_user %></li>
        			<li><%= link_to "Add Friends", "#"%></li>
        			<li><%= link_to "Settings", {:action => "new_profile", :controller => "home"} %>
+       			<li><%= link_to 'Edit account', '/users/edit' %></li>
        			<li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> </li>
        		</ul>
        	</li>

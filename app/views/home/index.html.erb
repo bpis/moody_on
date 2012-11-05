@@ -97,14 +97,13 @@
 		<div class="container">
         	<div class="row">
             	<div class="span4">
-                	<h2>All Users</h2>
+                	<h4>IN THE SAME MOOD</h4>
                 	<% @profiles.each do |profile| user = User.find_by_id(profile.user_id) %>               		
                 		<% if profile.profile_picture.present? %>
-                			<%= image_tag(profile.profile_picture, :height => 30, :width => 30) %>
+                			<%= link_to image_tag(profile.profile_picture, :title => profile.fname, :height => 41, :width => 41) %>
                 		<% else %>
-                			<%= link_to image_tag('/images/default_profile_image.png', :height => 30, :width => 30) %>
+                			<%= link_to image_tag('/images/default_profile_image.png', :title => profile.fname, :height => 41, :width => 41) %>
                 		<% end %> 
-                		<%= link_to profile.fname, users_path %>
                 	<% end %>        	
                 	<!-- <% @users.each do |user| %>
                 		<!-- <%= image_tag(current_user.profile.profile_picture, :height => 30, :width => 30) %> 
