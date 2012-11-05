@@ -98,12 +98,20 @@
         	<div class="row">
             	<div class="span4">
                 	<h2>All Users</h2>
-                	
-                	<% @users.each do |user| %>
+                	<% @profiles.each do |profile| user = User.find_by_id(profile.user_id) %>               		
+                		<% if profile.profile_picture.present? %>
+                			<%= image_tag(profile.profile_picture, :height => 30, :width => 30) %>
+                		<% else %>
+                			<%= link_to image_tag('/images/default_profile_image.png', :height => 30, :width => 30) %>
+                		<% end %> 
+                		<%= link_to profile.fname, users_path %>
+                	<% end %>        	
+                	<!-- <% @users.each do |user| %>
+                		<!-- <%= image_tag(current_user.profile.profile_picture, :height => 30, :width => 30) %> 
                 		<%= user.name %>
-                	<% end %> 
+                	<% end %> <br /><br /> -->
                 	<!-- <p>Morbi fringilla, arcu et pharetra ornare, arcu dolor tincidunt erat, non ornare nisl diam vitae orci. Nulla eu eros non ligula luctus aliquet. Morbi tempus laoreet urna, nec aliquam odio dapibus at. Nam in libero ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque et libero eu tortor eleifend vestibulum. Aenean molestie velit sed lectus placerat malesuada.</p> -->
-                	<p><a class="btn btn-inverse btn-large" href="#">Go</a></p>
+                	<!-- <p><a class="btn btn-inverse btn-large" href="#">Go</a></p> -->
             	</div>
             	<div class="span4">
                 	<h2>Column 2</h2>

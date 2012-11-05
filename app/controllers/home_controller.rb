@@ -3,8 +3,9 @@ class HomeController < ApplicationController
     before_filter :is_admin?, :except =>  [:index, :show_sub_moods, :profile, :new_profile, :show]
   
   def index
-    @users = User.paginate(page: params[:page])
-    # @profile = current_user.profile.paginate(page: params[:page]) 
+    #@users = User.paginate(page: params[:page])
+    @users = User.all
+    @profiles = Profile.all
     #@users = User.paginate(page: params[:page], :per_page => 10)
     #debugger
     @moods = Mood.order 'name'
