@@ -3,4 +3,5 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   mount_uploader :profile_picture, MoodPictureUploader
   validates :user_id, presence: true
+  
 end

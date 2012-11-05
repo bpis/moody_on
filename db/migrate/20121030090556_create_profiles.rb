@@ -17,7 +17,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :org_name
       t.string :designation
       t.string :profession
-
+      t.string :profile_picture
       t.timestamps
     end
   end

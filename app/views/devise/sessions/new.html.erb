@@ -1,4 +1,6 @@
 <h2>Sign in</h2>
+<%= link_to image_tag('/images/f_logo.jpg', :height => "30", :width => "30", :class => "img-rounded" ), "#" %>
+<%= link_to image_tag('/images/t_logo_white.png', :height => "30", :width => "30", :class => "img-rounded" ), "#" %>
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
   <%= f.input :email, :autofocus => true %>
   <%= f.input :password %>

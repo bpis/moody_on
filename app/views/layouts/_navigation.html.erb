@@ -12,10 +12,11 @@
        			<li><%= link_to "Add Friends", "#"%></li>
        			<li><%= link_to "Settings", {:action => "new_profile", :controller => "home"} %>
        			<li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> </li>
-       			<li><%= link_to 'Edit account', edit_user_registration_path %> </li>
        		</ul>
        	</li>
 	<% else %>
+		<li> <%= link_to image_tag('/images/f_logo.jpg', :height => "30", :width => "30", :class => "img-rounded" ), "#" %> </li>
+		<li> <%= link_to image_tag('/images/t_logo_white.png', :height => "30", :width => "30", :class => "img-rounded" ), "#" %> </li>
     	<li> <%= link_to 'Login', new_user_session_path %> </li>
     	<li> <%= link_to 'Sign up', new_user_registration_path %> </li>
   	<% end %>

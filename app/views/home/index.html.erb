@@ -1,47 +1,121 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
 
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab">Moods</a></li>
-    <li><a href="#tab2" data-toggle="tab">Sub-moods</a></li>
-  </ul>
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Cuccumber', 8],
+          ['Mushroom', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+  	<ul class="nav nav-tabs">
+    	<li class="active"><a href="#tab1" data-toggle="tab">Moods</a></li>
+    	<li><a href="#tab2" data-toggle="tab">Sub-moods</a></li>
+  	</ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <h3>
-	<% if current_user.has_role? :user %>
-	  What is your mood today?
-	<% else %>
-	  Listing Moods
-	<% end %>
+      <h3> 
+      	<% if current_user.has_role? :user %>
+	  		What is your mood today?
+		<% else %>
+	  		Listing Moods
+		<% end %>
       </h3>
-	<% @moods.each do |mood| %>
-	  <%= link_to image_tag(mood.mood_picture_url, title: mood.name, style: "background:gainsboro;"), {:action => 'show_sub_moods', :controller => 'home', :id => mood.id }, :remote => true %>
-	<% end %>
-	<% if current_user.has_role? :admin%>
-	  <ul class="nav nav-pills">
-	    <li class="active">
-	      <%= link_to 'New Mood', new_mood_path   %>
-	    </li>
-	  </ul>
-	<% end %>
+	  <% @moods.each do |mood| %>
+	  		<%= link_to image_tag(mood.mood_picture_url, title: mood.name, style: "background:gainsboro;"), {:action => 'show_sub_moods', :controller => 'home', :id => mood.id }, :remote => true %>
+	  <% end %>
+	  <% if current_user.has_role? :admin%>
+	  		<ul class="nav nav-pills">
+	    		<li class="active">
+	      			<%= link_to 'New Mood', new_mood_path   %>
+	    		</li>
+	  		</ul>
+	  <% end %>
     </div>
-    <div class="tab-pane" id="tab2">
-      <% @moods.each do |m| %>
-      <% m.sub_moods.each do |mood| %>
-	  <%= link_to image_tag(mood.sub_mood_picture, title: mood.name), url_for({:controller => "home", :action => "show_sub_moods", :id => mood.id }), :remote => true  %>
-	<% end %>
-	<% end %>
-    </div>
+    	<div class="tab-pane" id="tab2">
+      		<% @moods.each do |m| %>
+      			<% m.sub_moods.each do |mood| %>
+	  				<%= link_to image_tag(mood.sub_mood_picture, title: mood.name), url_for({:controller => "home", :action => "show_sub_moods", :id => mood.id }), :remote => true  %>
+      			<% end %>
+	  		<% end %>
+    	</div>
+  	</div>
   </div>
-</div>
+  <% if check_profile(current_user) %>
 
-<% if check_profile(current_user) %>
-<% else %>	
-	<%= link_to "Click here to Complete Your Profile", new_profile_path %>
-<% end %>
-
-		
-
-
-
-
-
+	<% else %>
+		<%= link_to "Click here to Complete Your Profile", new_profile_path %>
+  <% end %>
+  <!-- <%= select_tag "city", options_from_collection_for_select(Profile.all, "id", "city") %> -->
+	<script type="text/javascript">
+		function getComboA(sel) {
+   			var value = sel.options[sel.selectedIndex].value;  
+		}
+	</script>
+	<script>
+		function removeOption() {
+			var x=document.getElementById("mySelect");
+			x.remove(x.selectedIndex);
+		}
+	</script>
+	<%= form_for :profile do |f| %>
+		<%= f.label :mood_status %>
+		<%= f.collection_select(:user_id, Profile.all, :id, :city, options ={:prompt => "Select City"}, {:onchange => "$('getComboA').submit()"}) %>
+	<% end %>
+	<div id="chart_div" style="width: 900px; height: 500px;"></div>
+		<div class="container">
+        	<div class="row">
+            	<div class="span4">
+                	<h2>All Users</h2>
+                	
+                	<% @users.each do |user| %>
+                		<%= user.name %>
+                	<% end %> 
+                	<!-- <p>Morbi fringilla, arcu et pharetra ornare, arcu dolor tincidunt erat, non ornare nisl diam vitae orci. Nulla eu eros non ligula luctus aliquet. Morbi tempus laoreet urna, nec aliquam odio dapibus at. Nam in libero ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque et libero eu tortor eleifend vestibulum. Aenean molestie velit sed lectus placerat malesuada.</p> -->
+                	<p><a class="btn btn-inverse btn-large" href="#">Go</a></p>
+            	</div>
+            	<div class="span4">
+                	<h2>Column 2</h2>
+                	<p>Sed nec iaculis elit. Donec gravida risus ante, quis semper sem. Pellentesque sapien eros, sollicitudin hendrerit tincidunt eu, elementum ut velit. Vivamus ultricies suscipit mauris, at accumsan urna pellentesque non. Integer mollis justo non urna commodo ut tincidunt arcu venenatis. Nullam in libero id tellus posuere sollicitudin. Vestibulum eu dictum purus. Fusce dignissim facilisis pellentesque. Duis at risus eget magna mattis venenatis et non mi. </p>
+                	<p><a class="btn btn-info btn-large" href="#">Info</a></p>
+            	</div>
+            	<div class="span4">
+                	<h2>Column 3</h2>
+                	<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dignissim facilisis pellentesque. Duis at risus eget magna mattis venenatis et non mi.</p>
+                	<p><a class="btn btn-success btn-large" href="#">Read More...</a></p>
+            	</div>
+        	</div>
+		</div>
+	
+</html>

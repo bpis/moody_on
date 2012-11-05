@@ -27,3 +27,5 @@ gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem 'ruby-debug19', :require => 'ruby-debug', :group => [:development, :test]
 gem 'pg', :group => [:production]
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

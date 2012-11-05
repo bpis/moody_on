@@ -33,6 +33,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.0.1)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     builder (3.0.4)
     cancan (1.6.8)
     capybara (1.1.2)
@@ -210,6 +212,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -218,6 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (>= 2.1.0.0)
+  bootstrap-will_paginate
   cancan (>= 1.6.8)
   capybara (>= 1.1.2)
   carrierwave
@@ -243,3 +247,4 @@ DEPENDENCIES
   simple_form (>= 2.0.4)
   therubyracer (>= 0.10.2)
   uglifier (>= 1.0.3)
+  will_paginate
