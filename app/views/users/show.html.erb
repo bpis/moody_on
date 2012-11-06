@@ -12,31 +12,22 @@
     		<%= link_to image_tag('/images/default_profile_image.png', :alt => "Profile Picture", :width => 110, :height => 110, :title => "change?").to_s, new_profile_path %>
     	<% end %>
     </section>
-  </aside>
-  <aside class="span4">
     <section>
-       	<%= link_to @user.name %><br />
-    </section>
-  </aside>
-  <span class="span12">
-    <section>
-      		Email : <%= @user.email %><br />
-    </section>
-  </span>
-      		Temporary Address :  <%= @user.profile.address_line_1 %><br />
-      		Permanent Address :  <%= @user.profile.address_line_2 %><br />
-      		Gender : 			   <%= @user.profile.gender %><br />
-      		Date of Birth : 	   <%= @user.profile.date_of_birth %><br />
-      		Marital Status : 	   <%= @user.profile.marital_status %><br />
-      		City : 			   <%= @user.profile.city %><br />
-      		State :  			   <%= @user.profile.state %><br />
-      		Country : 		   <%= @user.profile.country %><br />
-      		Pincode : 		   <%= @user.profile.pincode %><br />
-      		Mobile No. : 		   <%= @user.profile.mobile_no %><br />
-      		Organisation : 	   <%= @user.profile.org_name %><br />
-      		Designation : 	   <%= @user.profile.designation %><br />
-      		Profession :         <%= @user.profile.profession %><br />
-      </div>
+    		<%= link_to @user.name %><br />	       	
+      		Email : <%= text_field_tag :email, @user.email, :readonly => true %><br />
+   			Temporary Address : <%= text_field_tag :email, @user.profile.address_line_1, :readonly => true %><br />
+   			Permanent Address : <%= text_field_tag :email, @user.profile.address_line_2, :readonly => true %><br />
+      		Gender : <%= text_field_tag :email, @user.profile.gender, :readonly => true %> <br />
+      		Date of Birth : <%= text_field_tag :email, @user.profile.date_of_birth, :readonly => true %><br />
+      		Marital Status : <%= text_field_tag :email, @user.profile.marital_status, :readonly => true %><br />
+      		City : <%= text_field_tag :email, @user.profile.city, :readonly => true %> <br />
+      		State :  <%= text_field_tag :email, @user.profile.state, :readonly => true %> <br />
+      		Country : <%= text_field_tag :email, @user.profile.country, :readonly => true %> <br />
+      		Pincode : <%= text_field_tag :email, @user.profile.pincode, :readonly => true %> <br />
+      		Mobile No. : <%= text_field_tag :email, @user.profile.mobile_no, :readonly => true %> <br />
+      		Organisation : <%= text_field_tag :email, @user.profile.org_name, :readonly => true %> <br />
+      		Designation : <%= text_field_tag :email, @user.profile.designation, :readonly => true %> <br />
+      		Profession : <%= text_field_tag :email, @user.profile.profession, :readonly => true %>  <br />
     </section> 
   </aside>
 </div>

@@ -3,13 +3,12 @@ class HomeController < ApplicationController
     before_filter :is_admin?, :except =>  [:index, :show_sub_moods, :profile, :new_profile, :show]
   
   def index
-    #@users = User.paginate(page: params[:page])
     @users = User.all
     @profiles = Profile.all
-    #@users = User.paginate(page: params[:page], :per_page => 10)
-    #debugger
     @moods = Mood.order 'name'
     @sub_moods = SubMood.dep_sub_mood(params[:id])
+    #@details = User.select('*').joins(:profile, :user_submood).all
+    @details = User.joins(:profile).joins(:profile => :city)
   end
   
   def show_sub_moods

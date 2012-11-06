@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030105303) do
+ActiveRecord::Schema.define(:version => 20121106102216) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20121030105303) do
   end
 
   add_index "sub_moods", ["mood_id"], :name => "index_sub_moods_on_mood_id"
+
+  create_table "user_submoods", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "submood_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

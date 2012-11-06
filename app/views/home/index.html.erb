@@ -1,6 +1,7 @@
 <html>
   <head>
     <!--Load the AJAX API-->
+    
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
@@ -13,22 +14,23 @@
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
+ 	  	<%#= @details = User.select('*').joins(:profile, :sub_mood).all %>
       function drawChart() {
 
         // Create the data table.
         var data = new google.visualization.DataTable();
+        
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-          ['Cuccumber', 8],
-          ['Mushroom', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
+          ['<%= @moods[0].name %>', 5],
+          ['<%= @moods[1].name %>', 2],
+          ['<%= @moods[2].name %>', 2],
+          ['<%= @moods[3].name %>', 1]
         ]);
 
         // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
+        var options = {'title':'Average Mood By City',
                        'width':400,
                        'height':300};
 
@@ -36,6 +38,7 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+   
     </script>
   </head>
   <div class="tabbable"> <!-- Only required for left/right tabs -->
@@ -73,7 +76,7 @@
   	</div>
   </div>
   <% if check_profile(current_user) %>
-
+		<%= link_to "View Your Profile", current_user %>
 	<% else %>
 		<%= link_to "Click here to Complete Your Profile", new_profile_path %>
   <% end %>
@@ -100,11 +103,11 @@
                 	<h4>IN THE SAME MOOD</h4>
                 	<% @profiles.each do |profile| user = User.find_by_id(profile.user_id) %>               		
                 		<% if profile.profile_picture.present? %>
-                			<%= link_to image_tag(profile.profile_picture, :title => profile.fname, :height => 41, :width => 41) %>
+                			<%= link_to image_tag(profile.profile_picture, :title => profile.fname, :height => 41, :width => 41), users_path %>
                 		<% else %>
-                			<%= link_to image_tag('/images/default_profile_image.png', :title => profile.fname, :height => 41, :width => 41) %>
+                			<%= link_to image_tag('/images/default_profile_image.png', :title => profile.fname, :height => 41, :width => 41), users_path %>
                 		<% end %> 
-                	<% end %>        	
+                	<% end %>
                 	<!-- <% @users.each do |user| %>
                 		<!-- <%= image_tag(current_user.profile.profile_picture, :height => 30, :width => 30) %> 
                 		<%= user.name %>
