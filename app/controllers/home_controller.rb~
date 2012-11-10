@@ -13,9 +13,9 @@ class HomeController < ApplicationController
   def city_for_graph
     #debugger
     users = current_user.mood_according_city(params[:id])
-    moods = users.collect.each {|user| user.sub_mood.mood.name}
+    moods, user_count = users.collect.each {|user| user.sub_mood.mood.name}, users.collect.each {|user| user.sub_mood} 
     
-    render :partial => "home/city_for_graph", :locals => {:users => users, :moods => moods }
+    render :partial => "home/city_for_graph", :locals => {:users => users, :moods => moods, :user_count => user_count}
   
   end
   

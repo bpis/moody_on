@@ -1,0 +1,117 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("visualization", "1", {packages:["corechart"]});
+</script>
+ 
+
+
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+  	<ul class="nav nav-tabs">
+    	<li class="active"><a href="#tab1" data-toggle="tab">Moods</a></li>
+    	<li><a href="#tab2" data-toggle="tab">Sub-moods</a></li>
+  	</ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <h3> 
+      	<% if current_user.has_role? :user %>
+	  		What is your mood today?
+		<% else %>
+	  		Listing Moods
+		<% end %>
+      </h3>
+	  <% @moods.each do |mood| %>
+	  		<%= link_to image_tag(mood.mood_picture_url, title: mood.name, style: "background:gainsboro;"), {:action => 'show_sub_moods', :controller => 'home', :id => mood.id }, :remote => true %>
+	  <% end %>
+	  <% if current_user.has_role? :admin%>
+	  		<ul class="nav nav-pills">
+	    		<li class="active">
+	      			<%= link_to 'New Mood', new_mood_path   %>
+	    		</li>
+	  		</ul>
+	  <% end %>
+    </div>
+    	<div class="tab-pane" id="tab2">
+      		<% @moods.each do |m| %>
+      			<% m.sub_moods.each do |mood| %>
+	  				<%= link_to image_tag(mood.sub_mood_picture, title: mood.name), url_for({:controller => "home", :action => "show_sub_moods", :id => mood.id }), :remote => true  %>
+      			<% end %>
+	  		<% end %>
+    	</div>
+  	</div>
+  </div>
+  <% if check_profile(current_user) %>
+		<%= link_to "View Your Profile", current_user %>
+	<% else %>
+		<%= link_to "Click here to Complete Your Profile", new_profile_path %>
+  <% end %>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+<select name="profile[city]" id="city_select">
+<option value="">Select City</option>
+<option value="Wardha">Wardha</option>
+<option value="Nagpur">Nagpur</option>
+<option value="Pune">Pune</option>
+<option value="Mumbai">Mumbai</option>
+<option value="Akola">Akola</option>
+<option value="Amravati">Amravati</option>
+</select>	 
+
+	
+	
+<script>
+	$(function($) {
+    $("#city_select").change(function() {
+    	var city = $('select#city_select :selected').val();
+    	if(city == "") city = "select city";
+        $.ajax({url: '/home/city_for_graph/'+ city,
+        data: "Success",
+        success: function(data){
+        	$("#container").html(data);	
+        }
+        })
+       // jQuery.get('/home/city_for_graph/'+ city, function(data){
+        // $("#chart_div").html(data);
+    // })
+    });
+});
+</script>
+	<%#= form_for :profile do |f| %>
+		<%#= f.label :mood_status, "Compare Moods By City" %>
+		<%#= f.collection_select(:user_id, Profile.all, :id, :city, options ={:prompt => "Select City"}, {:onchange => "$('getComboA').submit()"}) %> And 
+		<%#= f.collection_select(:user_id, Profile.all, :id, :city, options ={:prompt => "Select City"}, {:onchange => "$('getComboA').submit()"}) %>
+	<%# end %>
+	
+		
+	
+	
+		<div class="container">
+        	<div class="row">
+            	<div class="span4">
+                	<h4>IN THE SAME MOOD</h4>
+                	<% @profiles.each do |profile| user = User.find_by_id(profile.user_id) %>               		
+                		<% if profile.profile_picture.present? %>
+                			<%= link_to image_tag(profile.profile_picture, :title => profile.fname, :height => 41, :width => 41), users_path %>
+                		<% else %>
+                			<%= link_to image_tag('/images/default_profile_image.png', :title => profile.fname, :height => 41, :width => 41), users_path %>
+                		<% end %> 
+                	<% end %>
+                	<!-- <% @users.each do |user| %>
+                		<!-- <%= image_tag(current_user.profile.profile_picture, :height => 30, :width => 30) %> 
+                		<%= user.name %>
+                	<% end %> <br /><br /> -->
+                	<!-- <p>Morbi fringilla, arcu et pharetra ornare, arcu dolor tincidunt erat, non ornare nisl diam vitae orci. Nulla eu eros non ligula luctus aliquet. Morbi tempus laoreet urna, nec aliquam odio dapibus at. Nam in libero ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque et libero eu tortor eleifend vestibulum. Aenean molestie velit sed lectus placerat malesuada.</p> -->
+                	<!-- <p><a class="btn btn-inverse btn-large" href="#">Go</a></p> -->
+            	</div>
+            	<div class="span4">
+                	<h2>Column 2</h2>
+                	<p>Sed nec iaculis elit. Donec gravida risus ante, quis semper sem. Pellentesque sapien eros, sollicitudin hendrerit tincidunt eu, elementum ut velit. Vivamus ultricies suscipit mauris, at accumsan urna pellentesque non. Integer mollis justo non urna commodo ut tincidunt arcu venenatis. Nullam in libero id tellus posuere sollicitudin. Vestibulum eu dictum purus. Fusce dignissim facilisis pellentesque. Duis at risus eget magna mattis venenatis et non mi. </p>
+                	<p><a class="btn btn-info btn-large" href="#">Info</a></p>
+            	</div>
+            	<div class="span4">
+                	<h2>Column 3</h2>
+                	<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dignissim facilisis pellentesque. Duis at risus eget magna mattis venenatis et non mi.</p>
+                	<p><a class="btn btn-success btn-large" href="#">Read More...</a></p>
+            	</div>
+        	</div>
+		</div>

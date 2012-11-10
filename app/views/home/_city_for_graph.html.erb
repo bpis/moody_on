@@ -1,0 +1,96 @@
+
+<script>
+$(document).ready(function(){
+	var chart;
+	var city1 = $('select#city_select :selected').val();
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                type: 'line',
+                marginRight: 130,
+                marginBottom: 25
+            },
+            title: {
+                text: 'Average Moods of ' + city1 + ' and <%= "Pune" %>',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'Source: MoodyOn.com',
+                x: -20
+            },
+            xAxis: {
+                categories: [<% moods.uniq.each do |mood| %>
+				'<%= mood %>', <%#= moods.last ? "," : "" %>
+				<% end %>
+				
+			    ]
+            },
+            yAxis: {
+                title: {
+                    text: 'Users count in number'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        this.x +': '+ this.y;
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            series: [{
+                name: city1,
+                data: [<%= users.sort.count{|x| x.sub_mood.mood.name == 'Glad'} %>, <%= users.sort.count{|x| x.sub_mood.mood.name == 'Mad'} %>, <%= users.sort.count{|x| x.sub_mood.mood.name == 'Normal'} %>, <%= users.sort.count{|x| x.sub_mood.mood.name == 'Sad'} %> ]
+            }, {
+                name: 'Pune',
+                data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            }]
+        });
+    });
+    
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+/*$(document).ready(function(){ drawChart(); });
+function drawChart(){
+	var city1 = $('select#city_select :selected').val();
+	var data = google.visualization.arrayToDataTable(
+ 	  				[ ['Mood', city1, city1], 
+ 	  				  [ <%# moods.uniq.each do |mood| %>
+ 	  				  	['<%#= mood %>', '<%#= user_count.uniq.count %>',
+ 	  				  	 '<%#= user_count.uniq.count %>'
+ 	  				  	 ]
+          				<%# end %> ]]);
+
+        var options = {
+        	width: 900, height: 500,
+          	title: 'Average Mood'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+}*/
+</script>
+   

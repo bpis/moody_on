@@ -1,0 +1,3 @@
+alert("hello");
+$('#chart_div').append(<%= escape_javascript(render :partial => "home/city_for_graph", :locals => {:users => @users, :moods => @moods, :user_count => @user_count}) %>);
+

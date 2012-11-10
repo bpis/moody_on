@@ -99,5 +99,30 @@ describe User do
     end
 
   end
+  
+  # describe "profile" do
+#     
+    # before(:each) do
+      # @user = User.create(@attr)
+      # @profile = Factory(:profile, :user => @user, :created_at => 1.day.ago)
+    # end
+#     
+    # it "should have a profile attribute" do
+      # @user.should respond_to(:profile)
+    # end
+#     
+    # it "should have the right user profile" do
+      # @user.profile.should == @profile
+    # end
+#     
+    # it "should destroy associated profile" do
+      # @user.destroy
+      # [@profile].each do |profile|
+        # lambda do
+          # Profile.find(profile)
+        # end.should railse_error(ActiveRecord::RecordNotFound)
+      # end
+    # end
+  # end
 
 end

@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20121106102216) do
 
   create_table "user_submoods", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "submood_id"
+    t.integer  "sub_mood_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -12,6 +12,7 @@ MoodyOn::Application.routes.draw do
  
   match "profile" => "home#profile"
   match "new_profile" => "home#new_profile"
+  match '/home/city_for_graph/:id' => 'home#city_for_graph' 
   
   
   authenticated :user do
